@@ -1,0 +1,20 @@
+<table>
+  <tr>
+    <th>First name</th>
+    <th>Last name</th>
+    <th>Email</th>
+    <th>Student?</th>
+    <th>Where do you study?</th>
+  </tr>
+  <tr *ngFor = "let response of allResponses">
+    <td>{{response.firstName}}</td>
+    <td>{{response.lastName}}</td>
+    <td>{{response.email}}</td>
+    <td>{{response.isStudent}}</td>
+    <td>{{response.studyLocation}}</td>
+  </tr>
+
+  <!-- <tr ngFor*="let response: FormResponse of allResponses">
+    <td>{{ response.firstName }}</td>
+  </tr> -->
+</table>
