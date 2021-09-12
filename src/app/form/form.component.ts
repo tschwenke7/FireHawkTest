@@ -3,13 +3,14 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { FormResponsesService } from '../form-responses.service';
 import { FormResponse } from '../models/formResponse';
 import { CookieService } from 'ngx-cookie-service';
+import { AccordionComponent } from '../accordion.component';
 
 @Component({
   selector: 'app-form',
   templateUrl: './form.component.html',
   styleUrls: ['./form.component.css']
 })
-export class FormComponent implements OnInit {
+export class FormComponent extends AccordionComponent implements OnInit  {
 
   studyLocationVisible: boolean = false;
 
@@ -55,64 +56,19 @@ export class FormComponent implements OnInit {
     }
   }
 
-  
-  panelMaxHeightOpen: string = "100%";
-  panelMaxHeightClosed: string = "0";
-  accordionHeadingOpen: string = "⯆ Let's Get In Touch";
-  accordionHeadingClosed: string = "⯈ Let's Get In Touch";
-
-  //set this from cooking on page load
-  accordionOpen?: boolean;
-  accordionHeading?: string;
-  panelMaxHeight?: string;
-
-  onAccordionClick() {
-    //if accordion is in closed state, open it
-    if(this.accordionOpen == false) {
-      //remove max height restriction
-      this.panelMaxHeight = this.panelMaxHeightOpen
-      //change arrow to open arrow
-      this.accordionHeading = this.accordionHeadingOpen;
-    }
-
-    //otherwise it is in open state, so close it
-    else{
-      //set max height to 0
-      this.panelMaxHeight = this.panelMaxHeightClosed;
-      //change arrow to closed arrow
-      this.accordionHeading = this.accordionHeadingClosed;
-    }
-
-    //flip accordion flag and update cookie
-    this.accordionOpen = !this.accordionOpen;
-    this.cookieService.set('accordion-open-form', String(this.accordionOpen), 30);
-  }
+  accordionHeadingText = "Let's Get In Touch";
 
   submissionMessage: string = "";
 
-  constructor(formResponsesService: FormResponsesService, private cookieService: CookieService) {
+  constructor(formResponsesService: FormResponsesService, cookieService: CookieService) {
+    super(cookieService);
     this.formResponsesService = formResponsesService;
   }
 
   formResponsesService: FormResponsesService;
 
   ngOnInit() {
-    let cookieValue = this.cookieService.get('accordion-open-form');
-    console.warn(cookieValue);
-    if(cookieValue == "true"){
-      this.accordionOpen = true;
-      //remove max height restriction
-      this.panelMaxHeight = this.panelMaxHeightOpen
-      //change arrow to open arrow
-      this.accordionHeading = this.accordionHeadingOpen;
-    }
-    else {
-      this.accordionOpen = false;
-      //set max height to 0
-      this.panelMaxHeight = this.panelMaxHeightClosed;
-      //change arrow to closed arrow
-      this.accordionHeading = this.accordionHeadingClosed;
-    }
+    super.ngOnInit();
   }
 
 }
