@@ -3,7 +3,7 @@
   <div class="accordion" (click)="onAccordionClick()">
     <h2>{{ accordionHeading }}</h2>
   </div>
-  <div #panel class="panel" [style.maxHeight]="panelMaxHeight">
+  <div class="panel" [style.maxHeight]="panelMaxHeight">
     <form [formGroup]="formResponsesService.userForm" (ngSubmit)="onSubmit()">
       <div class="input-wrapper">
         <input type="text" formControlName="firstName" id="firstName" placeholder="First name"/>

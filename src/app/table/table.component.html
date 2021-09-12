@@ -1,8 +1,8 @@
 <div class="content-container">
-  <div class="accordion">
-    <h2>Previous Responses</h2>
+  <div class="accordion" (click)="onAccordionClick()">
+    <h2>{{ accordionHeading }}</h2>
   </div>
-  <div class="panel">
+  <div class="panel" [style.maxHeight]="panelMaxHeight">
     <table>
       <tr>
         <th>First name</th>

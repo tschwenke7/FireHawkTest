@@ -57,6 +57,7 @@ export class FormComponent extends AccordionComponent implements OnInit  {
   }
 
   accordionHeadingText = "Let's Get In Touch";
+  cookieSuffix = "form";
 
   submissionMessage: string = "";
 
@@ -70,5 +71,4 @@ export class FormComponent extends AccordionComponent implements OnInit  {
   ngOnInit() {
     super.ngOnInit();
   }
-
 }

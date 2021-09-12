@@ -1,3 +1,4 @@
+import { StringMapWithRename } from '@angular/compiler/src/compiler_facade_interface';
 import { Component, OnInit } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
 
@@ -6,12 +7,16 @@ import { CookieService } from 'ngx-cookie-service';
     template: ""
 })
 export class AccordionComponent implements OnInit {
+
+
+    //properties to be specified in inheriting components
+    accordionHeadingText?: string;
+    cookieSuffix?: string;
   
   panelMaxHeightOpen: string = "100%";
   panelMaxHeightClosed: string = "0";
   accordionOpenSymbol: string = "⯆ ";
   accordionClosedSymbol: string = "⯈ "
-  accordionHeadingText?: string;
 
   //set this from cooking on page load
   accordionOpen?: boolean;
@@ -21,7 +26,7 @@ export class AccordionComponent implements OnInit {
   constructor(private cookieService: CookieService){}
 
   ngOnInit() {
-    let cookieValue = this.cookieService.get('accordion-open-form');
+    let cookieValue = this.cookieService.get('accordion-open-' + this.cookieSuffix);
     console.warn(cookieValue);
     if(cookieValue == "true"){
       this.accordionOpen = true;
@@ -58,7 +63,7 @@ export class AccordionComponent implements OnInit {
 
     //flip accordion flag and update cookie
     this.accordionOpen = !this.accordionOpen;
-    this.cookieService.set('accordion-open-form', String(this.accordionOpen), 30);
+    this.cookieService.set('accordion-open-' + this.cookieSuffix, String(this.accordionOpen), 30);
   }
 
 }
