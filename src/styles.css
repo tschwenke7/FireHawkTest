@@ -1,15 +1,23 @@
 /* You can add global styles to this file, and also import other style files */
-h1, h2, h3 {
+h1, h2, h3, p, body {
     font-family: sans-serif;
 }
 
 .main-container {
     margin: 25px;
+    
+    width: 100%;
+}
+.content-container {
     box-shadow: 0 0 10px 0 rgba(0,0,0,0.26);
     border-radius: 28px 28px 28px 28px;
     padding: 15px;
     max-width: 600px;
-    width: 100%;
+}
+
+.panel {
+    overflow: hidden;
+    /* transition: max-height 0.2s ease-out; */
 }
 
 input[type="email"], input[type="text"], input[type="submit"] {
@@ -32,6 +40,8 @@ input[type="submit"] {
     background-color: #9B3405;
     color: white;
     border-color: white;
+    transition: color 0.15s ease-in;
+    transition: background-color 0.15s ease-in
 }
 input[type="submit"]:hover {
     background-color: white;

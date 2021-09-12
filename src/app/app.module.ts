@@ -13,6 +13,8 @@ import { environment } from 'src/environments/environment';
 import { AngularFireModule } from '@angular/fire/compat'
 import { AngularFirestoreModule } from "@angular/fire/compat/firestore";
 
+import { CookieService } from 'ngx-cookie-service';
+
 @NgModule({
   declarations: [		
     AppComponent,
@@ -26,7 +28,7 @@ import { AngularFirestoreModule } from "@angular/fire/compat/firestore";
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFirestoreModule
   ],
-  providers: [FormResponsesService],
+  providers: [FormResponsesService, CookieService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

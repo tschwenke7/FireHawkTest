@@ -1,35 +1,39 @@
-<h2>Let's get in Touch...</h2>
-<div class="form-container">
-  <form [formGroup]="formResponsesService.userForm" (ngSubmit)="onSubmit()">
-    <div class="input-wrapper">
-      <input type="text" formControlName="firstName" id="firstName" placeholder="First name"/>
-    </div>
 
-    <div class="input-wrapper">
-      <input type="text" formControlName = 'lastName' id="lastName" placeholder="Last name"/>
-    </div>
-
-    <div class="input-wrapper">
-    
-      <input type="email" formControlName="email" id="email" placeholder="Email"/>
-    </div>
-
-    <div class="input-wrapper">
-      <label for="isStudent">Are you a student?</label>
-      <input type="radio" formControlName="isStudent" id="studentYes" value="yes" (change)="selectIsStudent($event)"> Yes
-      <input type="radio" formControlName="isStudent" id="studentNo" value="no" (change)="selectIsStudent($event)"> No
-    </div>
-
-    <div class="input-wrapper" *ngIf="studyLocationVisible">
-      <input type="text" formControlName="studyLocation" id="studyLocation" placeholder="Where do you study?"/>
-    </div>
-
-    <div class="input-wrapper">
-      <input type="submit" id="submit" value = "Submit" [disabled]="!formResponsesService.userForm.valid"/>
-    </div>
-
-  </form>
-  <p *ngIf='submissionMessage != ""'>{{ submissionMessage }}</p>
-  <!-- <p>Status: {{ formResponsesService.userForm.status }}</p> -->
-
+<div class="content-container">
+  <div class="accordion" (click)="onAccordionClick()">
+    <h2>{{ accordionHeading }}</h2>
+  </div>
+  <div #panel class="panel" [style.maxHeight]="panelMaxHeight">
+    <form [formGroup]="formResponsesService.userForm" (ngSubmit)="onSubmit()">
+      <div class="input-wrapper">
+        <input type="text" formControlName="firstName" id="firstName" placeholder="First name"/>
+      </div>
+  
+      <div class="input-wrapper">
+        <input type="text" formControlName = 'lastName' id="lastName" placeholder="Last name"/>
+      </div>
+  
+      <div class="input-wrapper">
+      
+        <input type="email" formControlName="email" id="email" placeholder="Email"/>
+      </div>
+  
+      <div class="input-wrapper">
+        <label for="isStudent">Are you a student?</label>
+        <input type="radio" formControlName="isStudent" id="studentYes" value="yes" (change)="selectIsStudent($event)"> Yes
+        <input type="radio" formControlName="isStudent" id="studentNo" value="no" (change)="selectIsStudent($event)"> No
+      </div>
+  
+      <div class="input-wrapper" *ngIf="studyLocationVisible">
+        <input type="text" formControlName="studyLocation" id="studyLocation" placeholder="Where do you study?"/>
+      </div>
+  
+      <div class="input-wrapper">
+        <input type="submit" id="submit" value = "Submit" [disabled]="!formResponsesService.userForm.valid"/>
+      </div>
+  
+    </form>
+    <p *ngIf='submissionMessage != ""'>{{ submissionMessage }}</p>
+    <!-- <p>Status: {{ formResponsesService.userForm.status }}</p> -->
+  </div>
 </div>

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { FormResponsesService } from '../form-responses.service';
 import { FormResponse } from '../models/formResponse';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-form',
@@ -54,15 +55,64 @@ export class FormComponent implements OnInit {
     }
   }
 
+  
+  panelMaxHeightOpen: string = "100%";
+  panelMaxHeightClosed: string = "0";
+  accordionHeadingOpen: string = "⯆ Let's Get In Touch";
+  accordionHeadingClosed: string = "⯈ Let's Get In Touch";
+
+  //set this from cooking on page load
+  accordionOpen?: boolean;
+  accordionHeading?: string;
+  panelMaxHeight?: string;
+
+  onAccordionClick() {
+    //if accordion is in closed state, open it
+    if(this.accordionOpen == false) {
+      //remove max height restriction
+      this.panelMaxHeight = this.panelMaxHeightOpen
+      //change arrow to open arrow
+      this.accordionHeading = this.accordionHeadingOpen;
+    }
+
+    //otherwise it is in open state, so close it
+    else{
+      //set max height to 0
+      this.panelMaxHeight = this.panelMaxHeightClosed;
+      //change arrow to closed arrow
+      this.accordionHeading = this.accordionHeadingClosed;
+    }
+
+    //flip accordion flag and update cookie
+    this.accordionOpen = !this.accordionOpen;
+    this.cookieService.set('accordion-open-form', String(this.accordionOpen), 30);
+  }
+
   submissionMessage: string = "";
 
-  constructor(formResponsesService: FormResponsesService) {
+  constructor(formResponsesService: FormResponsesService, private cookieService: CookieService) {
     this.formResponsesService = formResponsesService;
   }
 
   formResponsesService: FormResponsesService;
 
   ngOnInit() {
+    let cookieValue = this.cookieService.get('accordion-open-form');
+    console.warn(cookieValue);
+    if(cookieValue == "true"){
+      this.accordionOpen = true;
+      //remove max height restriction
+      this.panelMaxHeight = this.panelMaxHeightOpen
+      //change arrow to open arrow
+      this.accordionHeading = this.accordionHeadingOpen;
+    }
+    else {
+      this.accordionOpen = false;
+      //set max height to 0
+      this.panelMaxHeight = this.panelMaxHeightClosed;
+      //change arrow to closed arrow
+      this.accordionHeading = this.accordionHeadingClosed;
+    }
   }
 
 }
