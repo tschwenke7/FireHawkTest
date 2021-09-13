@@ -14,12 +14,8 @@ export class TableComponent extends AccordionComponent implements OnInit {
   formResponsesService: FormResponsesService;
   allResponses: FormResponse[] = [];
 
-  accordionHeadingText = "Responses";
-  cookieSuffix = "responses-table";
-
-
   constructor(formResponsesService: FormResponsesService, cookieService: CookieService) {
-    super(cookieService);
+    super(cookieService, "Responses", "responses-table");
     this.formResponsesService = formResponsesService;
   }
 

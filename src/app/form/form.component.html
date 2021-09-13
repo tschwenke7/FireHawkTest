@@ -20,8 +20,10 @@
   
       <div class="input-wrapper">
         <label for="isStudent">Are you a student?</label>
-        <input type="radio" formControlName="isStudent" id="studentYes" value="yes" (change)="selectIsStudent($event)"> Yes
-        <input type="radio" formControlName="isStudent" id="studentNo" value="no" (change)="selectIsStudent($event)"> No
+        <input type="radio" formControlName="isStudent" id="studentYes" value="yes" (change)="selectIsStudent($event)">
+        <label for="studentYes">Yes</label>
+        <input type="radio" formControlName="isStudent" id="studentNo" value="no" (change)="selectIsStudent($event)">
+        <label for="studentNo">No</label>
       </div>
   
       <div class="input-wrapper" *ngIf="studyLocationVisible">
@@ -29,7 +31,7 @@
       </div>
   
       <div class="input-wrapper">
-        <input type="submit" id="submit" value = "Submit" [disabled]="!formResponsesService.userForm.valid"/>
+        <input type="submit" id="submit" value = "Submit"/>
       </div>
   
     </form>

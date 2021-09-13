@@ -56,13 +56,10 @@ export class FormComponent extends AccordionComponent implements OnInit  {
     }
   }
 
-  accordionHeadingText = "Let's Get In Touch";
-  cookieSuffix = "form";
-
   submissionMessage: string = "";
 
   constructor(formResponsesService: FormResponsesService, cookieService: CookieService) {
-    super(cookieService);
+    super(cookieService, "Let's Get In Touch", "form");
     this.formResponsesService = formResponsesService;
   }
 
