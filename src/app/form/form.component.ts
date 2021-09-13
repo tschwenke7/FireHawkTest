@@ -70,7 +70,7 @@ export class FormComponent extends AccordionComponent implements OnInit  {
   submissionMessage: string = "";
 
   constructor(formResponsesService: FormResponsesService, cookieService: CookieService) {
-    super(cookieService, "Let's Get In Touch", "form");
+    super(cookieService, "form");
     this.formResponsesService = formResponsesService;
   }
 

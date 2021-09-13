@@ -15,7 +15,7 @@ export class TableComponent extends AccordionComponent implements OnInit {
   allResponses: FormResponse[] = [];
 
   constructor(formResponsesService: FormResponsesService, cookieService: CookieService) {
-    super(cookieService, "Responses", "responses-table");
+    super(cookieService, "responses-table");
     this.formResponsesService = formResponsesService;
   }
 

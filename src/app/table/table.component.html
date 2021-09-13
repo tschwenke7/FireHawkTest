@@ -1,28 +1,29 @@
-<div class="content-container">
-  <div class="accordion" (click)="onAccordionClick()">
-    <h2>{{ accordionHeading }}</h2>
-  </div>
-  <div class="panel" [style.maxHeight]="panelMaxHeight">
+<h2 class="accordion-header" id="headingTable">
+  <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTable" aria-expanded="true" aria-controls="collapseTable">
+    Responses
+  </button>
+</h2>
+<div id="collapseTable" class="accordion-collapse collapse show" aria-labelledby="headingTable">
+  <div class="accordion-body">
     <table>
-      <tr>
-        <th>First name</th>
-        <th>Last name</th>
-        <th>Email</th>
-        <th>Student?</th>
-        <th>Where do you study?</th>
-      </tr>
-      <tr *ngFor = "let response of allResponses">
-        <td>{{response.firstName}}</td>
-        <td>{{response.lastName}}</td>
-        <td>{{response.email}}</td>
-        <td>{{response.isStudent}}</td>
-        <td>{{response.studyLocation}}</td>
-      </tr>
-    
-      <!-- <tr ngFor*="let response: FormResponse of allResponses">
-        <td>{{ response.firstName }}</td>
-      </tr> -->
+      <thead>
+        <tr>
+          <th>First name</th>
+          <th>Last name</th>
+          <th>Email</th>
+          <th>Student?</th>
+          <th>Where do you study?</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor = "let response of allResponses">
+          <td>{{response.firstName}}</td>
+          <td>{{response.lastName}}</td>
+          <td>{{response.email}}</td>
+          <td>{{response.isStudent}}</td>
+          <td>{{response.studyLocation}}</td>
+        </tr>
+      </tbody>
     </table>
   </div>
 </div>
-
