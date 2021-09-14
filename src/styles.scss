@@ -1,28 +1,37 @@
 /* You can add global styles to this file, and also import other style files */
+$primary: #9B3405;
+
 @import "../node_modules/bootstrap/scss/bootstrap";
 
+// @font-face {
+//     font-family: GothamMedium;
+//     src: url(GothamMedium.ttf);
+// }
 @font-face {
-    font-family: GothamMedium;
-    src: url(GothamMedium.ttf);
+    font-family: Gotham;
+    src: url(GothamBook.ttf);
 }
-@font-face {
-    font-family: GothamLight;
-    src: url(GothamLight.ttf);
-}
-
-$brand-primary: #9B3405;
 
 body {
     margin: 25px;
-    font-family: "GothamLight", sans-serif;
+    font-family: "Gotham", sans-serif;
 }
 
-input, h1, h2, h3, h4, h5 {
-    font-family: "GothamMedium", sans-serif;
+h2 button {
+    letter-spacing: 0.9px;
+    font-weight: 900;
+    font-size: 24px !important;
+}
+
+input, label {
+    font-weight: 600;
 }
 
 input[type="submit"]{
     text-transform: uppercase;
+    font-weight: 900;
+    padding: 11px;
+    letter-spacing: 1.6px;
 }
 
 .form-group {
@@ -33,40 +42,43 @@ input[type="submit"]{
     color: #a94442;
 }
 
-// .main-container {
-//     padding: 25px;
-// }
-// .content-container {
-//     box-shadow: 0 0 10px 0 rgba(0,0,0,0.26);
-//     border-radius: 28px 28px 28px 28px;
-//     padding: 15px;
-//     max-width: 600px;
-// }
-
 input[type="email"], input[type="text"], input[type="submit"] {
     border-width: 1px 1px 1px 1px;
     border-radius: 28px 28px 28px 28px;
 }
 
-// input[type="submit"] {
-//     background-color: #9B3405;
-//     color: white;
-//     border-color: white;
-//     transition: color 0.2s ease-in;
-//     transition: background-color 0.2s ease-in;
-//     text-decoration: none;
-// }
-// input[type="submit"]:hover {
-//     background-color: white;
-//     color: #9B3405;
-//     border-color: #9B3405;
-//     text-decoration: underline;
-// }
+input[type="submit"]:hover {
+    background-color: white;
+    color: #9B3405;
+    border-color: #9B3405;
+    text-decoration: underline;
+}
 
-// .input-wrapper {
-//     margin-bottom: 12px;
-// }
+.bright-th {
+    background-color: $primary;
+    color: $white;
+}
 
-// .validation-error-messages {
-//     color: #a94442;
-// }
+.main-wrap {
+    overflow: hidden;
+    position: relative;
+}
+
+.main-wrap:before {
+    content: ' ';
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.07;
+    background-image: url('https://firehawkcrm.mystagingwebsite.com/wp-content/uploads/2020/02/2180994-02.png');
+    background-repeat: no-repeat;
+    background-position: 50% 0;
+    background-size: cover;
+  }
+
+.main-content {
+    position: relative;
+}

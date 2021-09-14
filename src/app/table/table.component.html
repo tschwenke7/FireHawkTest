@@ -9,7 +9,7 @@
     <div #accordionCollapse id="collapseTable" class="accordion-collapse collapse show" aria-labelledby="headingTable" [ngClass]="{'show' : accordionOpen}">
       <div class="accordion-body">
         <table class="table">
-          <thead>
+          <thead class="bright-th">
             <tr>
               <th>First name</th>
               <th>Last name</th>
@@ -18,7 +18,7 @@
               <th>Where do you study?</th>
             </tr>
           </thead>
-          <tbody>
+          <tbody class="table-striped">
             <tr *ngFor = "let response of allResponses">
               <td>{{response.firstName}}</td>
               <td>{{response.lastName}}</td>

@@ -50,8 +50,7 @@ export class AccordionComponent implements OnInit {
 
   onAccordionClick() {
     //flip accordion flag and update cookie
-    this.accordionOpen = !this.accordionOpen;
-    this.cookieService.set(this.cookieName, String(this.accordionOpen), 30);
+    this.cookieService.set(this.cookieName, String(!this.accordionOpen), 30);
     console.warn(this.accordionOpen);
   }
 }
