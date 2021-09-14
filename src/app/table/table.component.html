@@ -2,11 +2,11 @@
   <div class="col-12-xl">
     <h2 class="accordion-header" id="headingTable">
       <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTable" 
-      aria-expanded="true" aria-controls="collapseTable" (click)="onAccordionClick()" [ngClass]="{'collapsed' : !accordionOpen}" [attr.aria-expanded]="accordionOpen" >
+      aria-expanded="true" aria-controls="collapseTable" (click)="onAccordionClick()" [ngClass]="{'collapsed' : !accordionOpenInit}" [attr.aria-expanded]="accordionOpenInit" >
         Responses
       </button>
     </h2>
-    <div #accordionCollapse id="collapseTable" class="accordion-collapse collapse show" aria-labelledby="headingTable" [ngClass]="{'show' : accordionOpen}">
+    <div #accordionCollapse id="collapseTable" class="accordion-collapse collapse show" aria-labelledby="headingTable" [ngClass]="{'show' : accordionOpenInit}">
       <div class="accordion-body">
         <table class="table">
           <thead class="bright-th">

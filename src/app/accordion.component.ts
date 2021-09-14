@@ -26,7 +26,9 @@ export class AccordionComponent implements OnInit {
 
 
   //set this from cookie on page load
-  accordionOpen: boolean = true;
+  accordionOpenInit: boolean = true;
+
+  private accordionOpenInternal: boolean = true;
 
   private cookieName: string;
 
@@ -40,17 +42,18 @@ export class AccordionComponent implements OnInit {
     let cookieValue = this.cookieService.get(this.cookieName);
     //if cookie found and open status is set to false, close accordion
     if(cookieValue == "false"){
-        this.accordionOpen = false;
+        this.accordionOpenInit = false;
     }
     //if cookie not found or value is true/not false, open accordion
     else {
-      this.accordionOpen = true;
+      this.accordionOpenInit = true;
     }
+    this.accordionOpenInternal = this.accordionOpenInit;
   }
 
   onAccordionClick() {
     //flip accordion flag and update cookie
-    this.cookieService.set(this.cookieName, String(!this.accordionOpen), 30);
-    console.warn(this.accordionOpen);
+    this.accordionOpenInternal = ! this.accordionOpenInternal
+    this.cookieService.set(this.cookieName, String(this.accordionOpenInternal), 30);
   }
 }

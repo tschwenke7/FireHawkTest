@@ -2,11 +2,11 @@
 
 <h2 class="accordion-header" id="formHeading">
   <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseForm"
-  aria-expanded="true" aria-controls="collapseForm" (click)="onAccordionClick()" [ngClass]="{'collapsed' : !accordionOpen}" [attr.aria-expanded]="accordionOpen">
+  aria-expanded="true" aria-controls="collapseForm" (click)="onAccordionClick()" [ngClass]="{'collapsed' : !accordionOpenInit}" [attr.aria-expanded]="accordionOpenInit">
     Let's Get In Touch
   </button>
 </h2>
-<div id="collapseForm" class = "accordion-collapse collapse" [ngClass]="{'show' : accordionOpen}" aria-labelledby="formHeading">
+<div id="collapseForm" class = "accordion-collapse collapse" [ngClass]="{'show' : accordionOpenInit}" aria-labelledby="formHeading">
   <div class="accordion-body">
     <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
       <div class="row form-row">

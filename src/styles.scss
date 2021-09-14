@@ -60,7 +60,6 @@ input[type="submit"]:hover {
 }
 
 .main-wrap {
-    overflow: hidden;
     position: relative;
 }
 
@@ -77,6 +76,7 @@ input[type="submit"]:hover {
     background-repeat: no-repeat;
     background-position: 50% 0;
     background-size: cover;
+    min-height: 100vh;
   }
 
 .main-content {
