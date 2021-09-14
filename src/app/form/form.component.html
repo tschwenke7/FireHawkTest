@@ -1,84 +1,105 @@
 
 
 <h2 class="accordion-header" id="formHeading">
-  <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseForm" aria-expanded="true" aria-controls="collapseForm">
+  <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseForm"
+  aria-expanded="true" aria-controls="collapseForm" (click)="onAccordionClick()" [ngClass]="{'collapsed' : !accordionOpen}" [attr.aria-expanded]="accordionOpen">
     Let's Get In Touch
   </button>
 </h2>
-<div id="collapseForm" class = "accordion-collapse collapse show" aria-labelledby="formHeading">
+<div id="collapseForm" class = "accordion-collapse collapse" [ngClass]="{'show' : accordionOpen}" aria-labelledby="formHeading">
   <div class="accordion-body">
     <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
-      <div class="row">
+      <div class="row form-row">
         <div class="col-md-6">
-          <input type="text" formControlName="firstName" id="firstName" placeholder="First name"/>
-          <div *ngIf="firstName && firstName.touched && firstName.invalid" class="validation-error-messages" >
-            <p *ngIf="firstName.errors?.required">
-              This field is required.
-            </p>
+          <div class="form-group">
+            <input type="text" formControlName="firstName" id="firstName" placeholder="First name" class="form-control"/>
+            <div *ngIf="firstName && firstName.touched && firstName.invalid" class="validation-error-messages" >
+              <p *ngIf="firstName.errors?.required">
+                This field is required.
+              </p>
+            </div>
           </div>
         </div>
         <div class="col-md-6">
-          <input type="text" formControlName = 'lastName' id="lastName" placeholder="Last name"/>
-          <div *ngIf="lastName && lastName.touched && lastName.invalid" class="validation-error-messages" >
-            <p *ngIf="lastName.errors?.required">
-              This field is required.
-            </p>
-            <p *ngIf="lastName.errors?.maxlength">
-              Last name cannot be longer than 10 characters.
-            </p>
+          <div class="form-group">
+            <input type="text" formControlName = 'lastName' id="lastName" placeholder="Last name" class="form-control"/>
+            <div *ngIf="lastName && lastName.touched && lastName.invalid" class="validation-error-messages" >
+              <p *ngIf="lastName.errors?.required">
+                This field is required.
+              </p>
+              <p *ngIf="lastName.errors?.maxlength">
+                Last name cannot be longer than 10 characters.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-12">
+          <div class="form-group">
+            <input type="email" formControlName="email" id="email" placeholder="Email" class="form-control"/>
+            <div *ngIf="email && email.invalid && (email.dirty || email.touched)" class="validation-error-messages" >
+              <p *ngIf="email.errors?.required">
+                This field is required.
+              </p>
+              <p *ngIf="email.errors?.email">
+                Please enter a valid email address.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-12">
+          <div class="form-group">
+            <label for="isStudent">Are you a student?</label>
+            
+            <div class="form-check">
+              <input type="radio" formControlName="isStudent" id="studentYes" value="yes" (change)="selectIsStudent($event)" class="form-check-input">
+              <label for="studentYes" class="form-check-label">Yes</label>
+            </div>
+            <div class="form-check">
+              <input type="radio" formControlName="isStudent" id="studentNo" value="no" (change)="selectIsStudent($event)" class="form-check-input">
+              <label for="studentNo" class="form-check-label">No</label>
+            </div>
+            
+            <div *ngIf="isStudent && isStudent.invalid && (isStudent.dirty || isStudent.touched)" class="validation-error-messages" >
+              <p *ngIf="isStudent.errors?.required">
+                This field is required.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row" *ngIf="studyLocationVisible">
+        <div class="col">
+          <div class="form-group">
+            <input type="text" formControlName="studyLocation" id="studyLocation" placeholder="Where do you study?" class="form-control"/>
+            <div *ngIf="studyLocation && studyLocation.invalid && (studyLocation.dirty || studyLocation.touched)" class="validation-error-messages" >
+              <p *ngIf="studyLocation.errors?.required">
+                This field is required.
+              </p>
+            </div>
           </div>
         </div>
       </div>
 
       <div class="row">
         <div class="col">
-          <input type="email" formControlName="email" id="email" placeholder="Email"/>
-          <div *ngIf="email && email.invalid && (email.dirty || email.touched)" class="validation-error-messages" >
-            <p *ngIf="email.errors?.required">
-              This field is required.
-            </p>
-            <p *ngIf="email.errors?.email">
-              Please enter a valid email address.
-            </p>
+          <div class="form-group">
+            <input type="submit" id="submit" value = "Submit" class="form-control btn btn-primary"/>
           </div>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col">
-          <label for="isStudent">Are you a student?</label>
-          <input type="radio" formControlName="isStudent" id="studentYes" value="yes" (change)="selectIsStudent($event)">
-          <label for="studentYes">Yes</label>
-          <input type="radio" formControlName="isStudent" id="studentNo" value="no" (change)="selectIsStudent($event)">
-          <label for="studentNo">No</label>
-          <div *ngIf="isStudent && isStudent.invalid && (isStudent.dirty || isStudent.touched)" class="validation-error-messages" >
-            <p *ngIf="isStudent.errors?.required">
-              This field is required.
-            </p>
-          </div>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col">
-          <input type="text" formControlName="studyLocation" id="studyLocation" placeholder="Where do you study?"/>
-          <div *ngIf="studyLocation && studyLocation.invalid && (studyLocation.dirty || studyLocation.touched)" class="validation-error-messages" >
-            <p *ngIf="studyLocation.errors?.required">
-              This field is required.
-            </p>
-          </div>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col">
-          <input type="submit" id="submit" value = "Submit"/>
         </div>
       </div>
     </form>
     <div *ngIf='submissionMessage != ""' class="row">
       <div class="col">
-        <p>{{ submissionMessage }}</p>
+        <p [ngClass]="{'validation-error-messages' : submissionMessage.startsWith('Error')}">
+          {{ submissionMessage }}
+        </p>
       </div>
     </div>
   </div>
