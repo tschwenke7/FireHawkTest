@@ -46,7 +46,8 @@ export class FormComponent extends AccordionComponent implements OnInit  {
         firstName: formContents.firstName,
         lastName: formContents.lastName,
         email: formContents.email,
-        isStudent: formContents.isStudent
+        isStudent: formContents.isStudent,
+        timestamp: Date.now().valueOf()
       }
   
       //only add value of studyLocation if isStudent was actually set to 'yes' at time of form submission

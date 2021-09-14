@@ -10,7 +10,7 @@ import { FormResponse } from './models/formResponse';
 export class FormResponsesService {
 
   constructor(private fb: FormBuilder, private firestore: AngularFirestore) {
-    this.formResponsesCollection = firestore.collection<FormResponse>('formResponses');
+    this.formResponsesCollection = firestore.collection<FormResponse>('formResponses', ref => ref.orderBy('timestamp', 'desc'));
     this.responses$ = this.formResponsesCollection.valueChanges();
    }
 

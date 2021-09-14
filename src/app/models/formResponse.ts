@@ -3,5 +3,6 @@ export interface FormResponse {
     lastName: string,
     email: string,
     isStudent: boolean,
-    studyLocation?: string;
+    studyLocation?: string,
+    timestamp: any;
 }
